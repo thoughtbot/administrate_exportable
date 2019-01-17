@@ -45,8 +45,10 @@ module AdministrateExportable
         field.datetime if field.data
       when Administrate::Field::Email.to_s, Administrate::Field::Select.to_s
         field.data
-      when Administrate::Field::Password.to_s, Administrate::Field::String.to_s, Administrate::Field::Text.to_s
+      when Administrate::Field::Password.to_s
         field.truncate
+      when Administrate::Field::String.to_s, Administrate::Field::Text.to_s
+        field.data
       when Administrate::Field::Time.to_s
         field.data.strftime("%I:%M%p").to_s if field.data
       else
